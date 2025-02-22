@@ -1,0 +1,56 @@
+<section *ngIf="product" class="p-6 flex flex-col gap-3 md:h-full md:justify-center">
+    <header class="">
+        <h2 class="uppercase font-bold text-xs  tracking-widest text-Orange">
+            {{product.brand ? product.brand : "sneaker company"}}
+        </h2>
+    </header>
+    <h1 class="text-Very-dark-blue font-bold text-3xl md:text-4xl">
+        {{product.productTitle}}
+    </h1>
+    <p class="text-Dark-grayish-blue text-base">
+        {{product.description}}
+    </p>
+
+    <div class="flex md:flex-col justify-between items-center md:items-start my-4">
+        <div class="flex items-center gap-5">
+            <p class="font-bold text-3xl">
+                {{mainPrice | currency:"USD"}}
+            </p>
+            <span class="px-2 bg-Pale-orange rounded-sm text-Orange font-bold">
+                {{discount | percent}}
+            </span>
+        </div>
+        <!-- price-discount -->
+        <div class="font-bold text-Grayish-blue line-through">
+            {{realPrice | currency:"USD"}}
+        </div>
+    </div>
+
+    <!-- product-info__buy -->
+    <div class="flex flex-col gap-4 md:flex-row">
+        <!-- product-quantity -->
+        <div class="bg-Light-grayish-blue px-4 py-4 rounded-lg flex justify-between items-center md:basis-36">
+            <button class="w-5 h-5" [ngClass]="quantity <= 0 ? 'cursor-not-allowed' : '' " [disabled]="quantity <= 0" (click)="removeProduct()">
+                <img class="m-auto hover:brightness-150" src="./assets/icons/icon-minus.svg" alt="icon minus">
+            </button>
+            <div class="font-bold">
+                {{quantity}}
+            </div>
+            <button class="w-5 h-5" (click)="addProduct()">
+                <img class="m-auto hover:brightness-150" src="./assets/icons/icon-plus.svg" alt="icon plus">
+            </button>
+        </div>
+        <!-- buy-product -->
+        <!-- <button (click)="addProductToCart(product)" class="flex gap-4 flex-wrap font-bold bg-Orange text-White w-full md:w-auto justify-center px-6 py-4 rounded-lg flex-1 hover:opacity-40 shadow-2xl">
+            <img class="brightness-[3]" src="../../../assets/icons/icon-cart.svg">Add to cart
+        </button> -->
+        <app-button
+        (clickEvent)="addProductToCart(product)"
+        text="Add to cart"
+        iconUrl="./assets/icons/icon-cart.svg"
+        [rounded]="true"
+        iconStyle="brightness-[3]"
+        ></app-button>
+    </div>
+
+</section>

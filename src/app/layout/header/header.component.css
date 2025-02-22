@@ -1,0 +1,14 @@
+.cart-add-animation {
+    animation: cartanim normal .3s;
+}
+@keyframes cartanim {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.4;
+    }
+    100% {
+        scale: 1;
+    }
+}
