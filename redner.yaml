@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: xyntho
+    env: node
+    repo: https://github.com/remya88/xyntho
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        value: your-mongodb-connection-string
+      - key: POSTGRES_URI
+        value: your-postgres-connection-string
